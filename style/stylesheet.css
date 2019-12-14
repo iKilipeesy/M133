@@ -1,0 +1,107 @@
+/**************************************************************************************************************************************
+* Description:    Css for every site
+* Author:         Kenny Betschart
+* Date:           10.12.19
+**************************************************************************************************************************************/
+html{
+    font-family: Arial, Helvetica, sans-serif;
+}
+:root{
+    --main-color: #047eb6;
+}
+body{
+    margin: 0;
+}
+form{
+    margin: 0;
+    height: auto;
+}
+/**************************************************************
+****************************Nav Bar****************************
+**************************************************************/
+#mainNavBar{
+    width: 100%;
+    display: flex;
+    background-color: var(--main-color);
+    color: white;
+    justify-content: space-between;
+    height: 80px;
+}
+#navBarLinkContainer{
+    width: 35%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+a:link.navBarLink{
+    color: #FFFFFF;
+    text-decoration: none;
+}
+a:hover.navBarLink{
+    color: #838383;
+}
+a:visited.navBarLink{
+    color: #FFFFFF;
+}
+a:link#disabledLink{
+    color: currentColor;
+    opacity: 0.5;
+    text-decoration: none;
+    pointer-events: none;
+}
+#navBarLoginContainer{
+    width: 35%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+.loginButtons{
+    border: none;
+    margin: 0px 3px 0px 0px;
+    padding: 5px 7px 5px 7px;
+    background-color: white;
+}
+.loginButtons:hover{
+    box-shadow: 2px 2px 3px black;
+}
+#signupButton{
+    text-decoration: none;
+    background-color: white;
+    color: black;
+}
+/**************************************************************
+*****************************Signup****************************
+**************************************************************/
+.registerFormContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+.formContainer{
+    display: flex;
+    align-items: center;
+    background-color: #141414;
+    filter: drop-shadow(3px 3px 3px black);
+    color: white;
+    flex-flow: column;
+    padding: 3% 5% 3% 5%;
+}
+.form-group{
+    margin: 8px 0px 8px 0px;
+}
+.form-content{
+    
+}
+/**************************************************************
+****************************Footer*****************************
+**************************************************************/
+footer{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    background-color: var(--main-color);
+    bottom: 0px;
+    width: 100%;
+    position: fixed;
+}
