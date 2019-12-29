@@ -17,22 +17,19 @@
             $register->set_placeholder("ERROR MESSAGE", "" );
             
         }
-        
     }
-  
-
     // if there are POST PARAMETERS
     else if(isset($_POST["signup_button_form"])){
-       
-        if($_POST != array() && $_POST["signup_passw"] == $_POST["signup_cpassw"]){
-           
-            //User data            $password = hash('ripemd160', $_POST["signup_passw"]);
+        $register = new View("signup",true,false);
+
+        if($_POST != array() && $_POST["signup_passw"] == $_POST["signup_cpassw"]){          
+            //User data            
+            $password = $_POST["signup_passw"];
             $username = $_POST['signup_username'];
             $email = $_POST['signup_email'];
             $firstname = $_POST['signup_fname'];
             $lastname = $_POST['signup_lname'];
-            
-            
+                
             //Register user
             $registerAsisstant = new RegisterAssistant($username,$password,$email,$firstname,$lastname);
             $userCreated = $registerAsisstant->RegisterUser();
@@ -45,20 +42,20 @@
             else
             {
                 // display an error Message
-                $register = new View("signup",true,false);
                 $register->set_placeholder("ERROR MESSAGE", "A user with these credentials already exists");
             }
 
         }
         else if ($_POST != array())
         {
-            $register = new View("signup",true,false);
+            //Unmatching passwords error
             $register->set_placeholder("ERROR MESSAGE", "Your Passwords don't match");
            
         }
 
     }
 
+    //Display all components
     $header->display();
     $nav->display();
     $register->display();

@@ -20,13 +20,13 @@ class RegisterAssistant{
     private $role;
 
 
-    public function __construct($username, $password, $email, $firstname, $lastname, $role = 2){
+    public function __construct($username, $password, $email, $firstname, $lastname){
         $this->username = $username;
         $this->password = $password;
         $this->email = $email;
         $this->firstname = $firstname;
         $this->lastname = $lastname;
-        $this->role = $role;
+        $this->role = 2;
     }
 
 
@@ -41,16 +41,14 @@ class RegisterAssistant{
             if(!$alreadyExists){
              
                 $dbConnection->RegisterUser($this->username, $this->password, $this->email, $this->firstname, $this->lastname, $this->role);
-                $dbConnection->CloseConnection();
                 return true;
             }
             else
             {
-                $dbConnection->CloseConnection();
                 return false;
             }
             
-            
+            $dbConnection->CloseConnection();
     }
 
 }

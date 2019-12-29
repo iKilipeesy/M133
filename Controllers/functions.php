@@ -30,13 +30,7 @@ function user_login(){
 			$username = $_POST['username'];
             $password = $_POST["password"];
             $loginAssistant = new LoginAssistant($username,$password);
-            $_SESSION['user'] = $loginAssistant->user_login();
-            
-            //Generate a secure token using openssl_random_pseudo_bytes.
-			if (empty($_SESSION['token'])) {
-				$_SESSION['token'] = bin2hex(random_bytes(32));
-			}
-			$token = $_SESSION['token'];
+            $_SESSION['User'] = $loginAssistant->user_login();
             
             //Goes back to the Homepage
             header("Location: index.php?page=0");
@@ -56,15 +50,11 @@ function user_logout(){
    if($loginAssistant == null){
        $loginAssistant = new LoginAssistant("temporary","temporary");
    }
-	if(isset($_SESSION['user'])){
+	if(isset($_SESSION['User'])){
 		if (isset($_POST["logout_button"])) {
-			if(isset($_POST['token']) && hash_equals($_SESSION['token'], $_POST['token'])){
-				$loginAssistant->user_logout();
-				header("Location: index.php?page=0");
-			}
-			else{
-				header("Location: index.php?page=0");
-			}
+			
+			$loginAssistant->user_logout();
+			header("Location: index.php?page=0");
 		}
 	}
 }

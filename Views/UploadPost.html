@@ -7,18 +7,18 @@
 -->
 
 <p></p>
-<form action="new_post.php" method="POST">
+<form action="uploadPost.php" method="POST">
 
   <input type="hidden" name="token" value="{token}">
 
-  <input class="article_title" type="text" name="Post_Article_Title" placeholder="An interesting Title" required></input>
+  <input class="article_title" type="text" name="UploadPostTitle" placeholder="An interesting Title" required></input>
   <br> <br>
 
-  <textarea class="textarea" id="editor" name="Post_Article_Text" placeholder="Write something here..." rows="6" cols="100"></textarea>
+  <textarea class="textarea" id="editor" name="UploadPostText" placeholder="Write something here..." rows="6" cols="100"></textarea>
   <br>
 
   <div class="postbtn">
-    <input name="Post_Article_Button" class="btnpost btn-lg btn-success btn-block text-uppercase" value="Post Article" type="submit"></input>
+    <input name="UploadPostButton" class="btnpost btn-lg btn-success btn-block text-uppercase" value="Post Article" type="submit"></input>
   </div>
   <br>
   {ERROR MESSAGE}</p>

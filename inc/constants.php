@@ -18,6 +18,6 @@ define("VIEWS_PATH", "Views/");
 define("DATABASE_FUNC", "DatabaseConnection.class.php");
 
 define("SIGN_UP_CONTROLLER_LINK","/myBlog/Controllers/register.php?link=signup_form");
-define("CREATE_POST_CONTROLLER_LINK","/myBlog/Controllers/new_post.php?link=new_post");
+define("CREATE_POST_CONTROLLER_LINK","/myBlog/Controllers/uploadPost.php?link=uploadPost");
 define("HOME_CONTROLLER_LINK", "/myBlog/Controllers/index.php?page=0");
 ?>

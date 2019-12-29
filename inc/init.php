@@ -49,7 +49,7 @@
     $header = new View("header",true,false);
 
     //Load proper login window and menu - might be able to export this
-    if(isset($_SESSION['user'])){
+    if(isset($_SESSION['User'])){
         // Load the Navbar for logged in users
         $nav = new View("navbar_loggedin", true, false);
     

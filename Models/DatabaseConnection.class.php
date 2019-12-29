@@ -24,7 +24,7 @@ class DatabaseConnection{
         $this->db_host = DB_HOST_ADDRESS;
 
         //Open database Connection
-        $this->connection  = $this->connect_database();
+        $this->connection  = $this->OpenConnection();
     }
 
     //Open DB Connection
@@ -93,16 +93,17 @@ class DatabaseConnection{
     function RegisterUser($username, $password, $email, $firstName, $lastName, $role){
 
         //Prepare SQL Statement for INSERT with parameters
-        $stmt = $this->connection->prepare("INSERT INTO user (username, password, firstName, lastName, email, roleId) VALUES (?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param('sssssi', $username, $password, $fname, $lname, $email, $role);
+        $stmt = $this->connection->prepare("INSERT INTO user (username, firstName, lastName, email, roleId, password) VALUES (?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param('ssssis', $username, $firstName, $lastName, $email, $role, $password);
         
         //Execute returns a boolean if it was successfull or not
         if($stmt->execute()){
-            //Success message for user
+            //Success Message for user
         } 
         else{
-            echo "Error: " .$sql . "<br>" .mysqli_error($this->connection);
-        }      
+            echo "Error: <br>" .mysqli_error($this->connection);
+
+        }  
     }
 
     //Checks if a User with the enterd username and password exists in the database
@@ -170,9 +171,10 @@ class DatabaseConnection{
         $result = $stmt->get_result();
 
         //If 1 or more Users with that username/email were found return true otherwise return false
-        if(mysqli_num_rows($result) <= 0){
+        if(mysqli_num_rows($result) == 0){
             return false; 
-        }else if(mysqli_num_rows($result) >= 1){
+        }
+        else if(mysqli_num_rows($result) >= 1){
             return true;
         }
     }
