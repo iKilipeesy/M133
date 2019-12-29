@@ -11,8 +11,8 @@ require_once("../inc/init.php");
 $header->display();
 $nav->display();
 
-// shows all articles (5 articles on each page);
-// show_all_articles();
+// shows all posts (5 posts on each page);
+ShowPosts();
    
 //display Page
 $footer->display();

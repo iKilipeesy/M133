@@ -62,15 +62,15 @@ class DatabaseConnection{
 
         while($row = mysqli_fetch_object($data)){
             $posts[] = array("username" => $row->username, "firstname" => $row->firstName, "lastname" => $row->lastName, 
-            "title" => $row->title, "text" => $row->text, "date" => $row->creationDate, "postID" => $row->postID);
+            "title" => $row->title, "text" => $row->text, "date" => $row->creationDate, "postId" => $row->postId);
         }
 
         return $posts;
         
     }
 
-    //takes a specific ID and gets an article with its information 
-    function GetArticleWithId($postID){
+    //takes a specific ID and gets a post with its information 
+    function GetPostWithId($postID){
 
         //Prepare query statement
         $stmt = $this->connection->prepare("SELECT user.username, user.firstName, user.lastName,
