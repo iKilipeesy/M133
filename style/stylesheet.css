@@ -11,6 +11,7 @@ html{
 }
 body{
     margin: 0;
+    background-color: #141414;
 }
 form{
     margin: 0;
@@ -55,20 +56,87 @@ a:link#disabledLink{
     justify-content: left;
     align-items: center;
 }
+.form-control{
+    border: solid black 1px;
+}
 .loginButtons{
     border: none;
     margin: 0px 3px 0px 0px;
     padding: 5px 7px 5px 7px;
     background-color: white;
+    font-weight: bold;
 }
 .loginButtons:hover{
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
+.loginButtons:active{
     box-shadow: 2px 2px 3px black;
 }
 #signupButton{
     text-decoration: none;
-    background-color: white;
     color: black;
+    padding: 4px 6px 4px 6px;
 }
+#signupButton:hover{
+    color: white;
+}
+
+/**************************************************************
+*****************************Postlist**************************
+**************************************************************/
+.PostList{
+    list-style-type: none;
+    color: white;
+}
+.singlePost{
+    padding-left: 2%;
+    border-top: solid white 1px;   
+}
+.singlePostLink{
+    text-decoration: underline;
+    color: var(--main-color);
+}
+.singlePostLink:hover{
+    color:white;
+}
+#pageinationContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btnPage{
+    text-decoration: none;
+    border: solid var(--main-color) 1px;
+    height: min-content;
+    padding: 0.5% 1% 0.5% 1%;
+    color: white;
+    background-color: var(--main-color);
+    font-weight: bold;
+    margin-right: 1%;
+}
+.btnPage:hover{
+    background-color: white;
+    color: var(--main-color);
+}
+.btnPage:active{
+    box-shadow: 1px 1px 3px black;
+}
+#pageinationDisplay{
+    font-weight: bold;
+    display: flex;
+    height: min-content;
+    color: white;
+}
+
+/**************************************************************
+**************************Entire Post**************************
+**************************************************************/
+.entirePost{
+    color: white;
+}
+
 /**************************************************************
 *****************************Signup****************************
 **************************************************************/
@@ -93,6 +161,40 @@ a:link#disabledLink{
 .form-content{
     
 }
+
+/**************************************************************
+*************************Upload Post***************************
+**************************************************************/
+#uploadPostContainer{
+    margin-left: 1%;
+    width: 40%;
+    background-color: #141414;
+}
+#uploadPostTitle{
+    width: 50%;
+    border: solid black 1px;
+    padding: 0.5%;
+}
+#uploadPostText{
+    border: solid black 1px;
+    padding: 0.5%;
+    resize: none;
+}
+#uploadPostButton{
+    margin-top: 2%;
+    border: solid var(--main-color) 1px;
+    background-color: var(--main-color);
+    color: white;
+    font-weight: bold;
+    padding: 1% 1.5% 1% 1.5%;
+}
+#uploadPostButton:hover{
+    cursor: pointer;
+    color: var(--main-color);
+    background-color: white;
+
+}
+
 /**************************************************************
 ****************************Footer*****************************
 **************************************************************/

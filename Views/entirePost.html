@@ -5,16 +5,8 @@
  * Filename: entirePost
  * Description: Shows the entire Post
 -->
-<div class="full_article">
-        <div class="card">
-            <h5 class="card-header">{date_autor}</h5>
-            <div class="card-body">
-                <h5 class="card-title">{title}</h5>
-                <p class="card-text">{Articles}</p>
-                <form id="delete_article_form" action="post_deleted.php" method="POST">
-                    <input type="hidden" name="post_id" value="{post_id}">
-                    <button id="delete_article_button" name="delete_button" type="submit" {visible}></button>
-                </form>
-            </div>
-        </div>
+<div class="entirePost">
+        <h5 class="card-header">{date_autor}</h5>
+        <h5 class="card-title">{title}</h5>
+        <p class="card-text">{Articles}</p>
     </div>

@@ -7,19 +7,17 @@
 -->
 
 <p></p>
-<form action="uploadPost.php" method="POST">
+<div id="uploadPostContainer">
+  <form action="uploadPost.php" method="POST">
 
-  <input type="hidden" name="token" value="{token}">
+    <input id="uploadPostTitle" type="text" name="UploadPostTitle" placeholder="An interesting Title" required></input>
+    <br> <br>
 
-  <input class="article_title" type="text" name="UploadPostTitle" placeholder="An interesting Title" required></input>
-  <br> <br>
-
-  <textarea class="textarea" id="editor" name="UploadPostText" placeholder="Write something here..." rows="6" cols="100"></textarea>
-  <br>
-
-  <div class="postbtn">
-    <input name="UploadPostButton" class="btnpost btn-lg btn-success btn-block text-uppercase" value="Post Article" type="submit"></input>
-  </div>
-  <br>
-  {ERROR MESSAGE}</p>
-</form>
+    <textarea class="textarea" id="uploadPostText" name="UploadPostText" placeholder="Write something here..." rows="12" cols="100" maxlength="200"></textarea>
+    <br>
+    
+    <input name="UploadPostButton" id="uploadPostButton" value="UPLOAD" type="submit"></input>
+    <br>
+    {ERROR MESSAGE}</p>
+  </form>
+</div>
