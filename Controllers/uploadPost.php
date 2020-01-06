@@ -8,9 +8,8 @@
     */
 
     require_once(__DIR__."/../inc/init.php");
-    // if there are GET PARAMETERS
 
-    // normal link 
+    //Display the site if it was opened with the link
     if(isset($_GET["link"])){   
         if($_GET["link"] == "uploadPost"){
             $upload = new View("UploadPost",true,false);
@@ -18,30 +17,38 @@
         }
     }
 
+    //Display the site if it was refreshed because of an update
     else if(isset($_POST["UploadPostButton"])){
         $upload = new View("UploadPost",true,false);
 
-        //Checks if a post with this title already exists
-        $articleTitle = htmlspecialchars($_POST["UploadPostTitle"]);
-        $dbConnection = new DatabaseConnection();
-        $title_exists = $dbConnection->DoesPostTitleAlreadyExist($articleTitle);
+        //CHeck if the input fields have benn filled out
+        if ($_POST["UploadPostTitle"] != null && $_POST["UploadPostText"] != null) {
+            $dbConnection = new DatabaseConnection();
 
-        // if the title already exists display an error Message
-        if($title_exists == true){
-            $upload->set_placeholder("ERROR MESSAGE", "An Article with this title already exists!" );         
+            $postTitle = htmlspecialchars($_POST["UploadPostTitle"]);
+
+            //If the title already exists display an error Message
+            if( $dbConnection->DoesPostTitleAlreadyExist($postTitle) ){
+                $upload->set_placeholder("ERROR MESSAGE", "A Post with this title already exists!" );        
+            }
+            //If it's a new Post save it and redirect to the homepage
+            else{
+                $date = date("o:n:d");
+
+                $postText = htmlspecialchars($_POST["UploadPostText"]);
+                $userid = $_SESSION['User']->userId;
+                $dbConnection->UploadPost($date, $postTitle, $postText, $userid);
+                $dbConnection->CloseConnection();
+
+                //Redirect
+                header("Location: index.php?page=0");
+            }
+
         }
-        // if the article is a new one save it and redirect to frontpage
         else{
-            $date = date("o:n:d");
-
-            $articleText = htmlspecialchars($_POST["UploadPostText"]);
-            $userid = $_SESSION['User']->userId;
-            $dbConnection->UploadPost($date, $articleTitle, $articleText, $userid);
-            $dbConnection->CloseConnection();
-
-            //redirect
-            header("Location: index.php?page=0");
+            $upload->set_placeholder("ERROR MESSAGE", "You need to Fill out all the input fields!");
         }
+        
     }
 
 
