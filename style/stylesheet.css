@@ -56,12 +56,16 @@ a:link#disabledLink{
 #navBarLoginContainer{
     width: 35%;
     display: flex;
-    justify-content: left;
+    justify-content: right;
     align-items: center;
+    padding-right: 2%;
 }
 .form-control{
     border: solid black 1px;
     border-radius: 20px;
+}
+.form-control:hover, .form-control:focus{
+    border: solid var(--main-color) 2px;
 }
 .loginButtons{
     border: none;
@@ -86,6 +90,9 @@ a:link#disabledLink{
 #signupButton:hover{
     color: var(--main-color);
     cursor: pointer;
+}
+#logoutButton{
+    color: red;
 }
 
 /**************************************************************
@@ -126,6 +133,7 @@ a:link#disabledLink{
     background-color: black;
     font-weight: bold;
     margin-right: 1%;
+    border-radius: 20px;
 }
 .btnPage:hover{
     background-color: white;
@@ -180,31 +188,40 @@ a:link#disabledLink{
     color: white;
     flex-flow: column;
     padding: 3% 5% 3% 5%;
+    width: 30%;
+}
+#signupForm{
+    width: -moz-available;
 }
 #singupButton{
     border: solid var(--main-color) 2px;
+    border-radius: 20px;
     color: white;
     background: black;
     padding: 3% 5% 3% 5%;
     font-weight: bold;
+    margin-top: 1%;
 }
 #singupButton:hover{
     color: black;
     background-color: white;
     cursor: pointer;
 }
-#singupButton:active{
-    box-shadow: 1px 1px 3px black;
+#singupButton:active, #singupButton:focus{
+    box-shadow: 1px 1px 3px black;    
 }
 .form-group{
     margin: 8px 0px 8px 0px;
 }
 .input-field{
-    border: solid black 1px;
+    border: solid black 2px;
     border-radius: 20px;
     padding: 0.5% 1% 0.5% 1%;
-    width: 125%;
     min-height: 20px;
+    width: 100%;
+}
+.input-field:hover, .input-field:focus{
+    border: solid var(--main-color) 2px;
 }
 
 /**************************************************************

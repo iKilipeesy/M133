@@ -39,6 +39,18 @@
     else {
         die("Functions file couldn't be found!");
     }
+
+     //Loads classes automatically
+    spl_autoload_register( function ($class){
+        $class_file = __DIR__."/../Models/".ucfirst($class).".class.php";
+        
+        if(file_exists($class_file)) {
+            include_once($class_file);
+        } 
+        else {
+            die("Class $class couldn't be found!");
+        }
+    });
     /**************************************************************************/
 
     // Check if user has logged in or logged out

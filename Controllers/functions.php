@@ -7,20 +7,8 @@
  * Description: Controller for various function
  */
 
- // Loads class automatically
-function __autoload($class){
-    $class_file = __DIR__."/../Models/".ucfirst($class).".class.php";
-    
-	if(file_exists($class_file)) {
-		include_once($class_file);
-    } 
-    else {
-		die("Class $class couldn't be found!");
-	}
-}
-
-// Required for the Login (needed on nearly every Page)
-// Gets the Data from the Post and creats a new login Session
+/*Required for the Login
+* Gets the Data from the Post and creatds a new login Session*/
 function user_login(){
     global $loginAssistant;
 	if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -40,13 +28,13 @@ function user_login(){
 	}
 }
 
-// Required for the Logout (needed on nearly every Page)
-// Destroys the Session if one already exists, if by any mistake there is a user logged in
-// and cant logout because there is no session a new test  session and closes it again
+/* Required for the Logout (needed on nearly every Page)
+*  Destroys the Session if one already exists, if by any mistake there is a user logged in
+*  and cant logout because there is no session a new test  session and closes it again*/
 function user_logout(){
     global $loginAssistant;
 
-    // if the loginAssistant is not existing anymore create a new one to close the session
+    //If the loginAssistant is not existing anymore create a new one to close the session
    if($loginAssistant == null){
        $loginAssistant = new LoginAssistant("temporary","temporary");
    }
