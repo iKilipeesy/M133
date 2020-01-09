@@ -74,7 +74,7 @@ class DatabaseConnection{
 
         //Prepare query statement
         $stmt = $this->connection->prepare("SELECT user.username, user.firstName, user.lastName,
-        post.title, post.text, post.creationDate, post.postId
+        post.title, post.text, post.creationDate, post.postIdm post.karma
         FROM post INNER JOIN user ON post.userId=user.userId WHERE post.postId = ?");
         $stmt->bind_param('i',$postID);
         $stmt->execute();
@@ -88,6 +88,22 @@ class DatabaseConnection{
             return mysqli_fetch_object($result);
         }
     }
+	
+	function UpdatePostKarma($postID, $currentKarma){
+		//Prepare Sql Statement for update
+		$sql = "UPDATE post SET karma = ? WHERE Id = ?";
+		$stmt = $this->connection->prepare($sql);
+		$stmt->bind_param("ii", $postID, $currentKarma);
+		
+		//Execute returns a boolean if it was successfull or not
+        if($stmt->execute()){
+            //Success Message for user
+        } 
+        else{
+            echo "Error: <br>" .mysqli_error($this->connection);
+
+        } 
+	}
     
     //Registers a new user in the Database
     function RegisterUser($username, $password, $email, $firstName, $lastName, $role){
