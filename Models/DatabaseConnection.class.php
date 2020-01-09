@@ -74,7 +74,7 @@ class DatabaseConnection{
 
         //Prepare query statement
         $stmt = $this->connection->prepare("SELECT user.username, user.firstName, user.lastName,
-        post.title, post.text, post.creationDate, post.postId
+        post.title, post.text, post.creationDate, post.postId, post.karma
         FROM post INNER JOIN user ON post.userId=user.userId WHERE post.postId = ?");
         $stmt->bind_param('i',$postID);
         $stmt->execute();
@@ -88,7 +88,7 @@ class DatabaseConnection{
             return mysqli_fetch_object($result);
         }
     }
-    
+
     //Registers a new user in the Database
     function RegisterUser($username, $password, $email, $firstName, $lastName, $role){
 

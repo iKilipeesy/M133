@@ -8,8 +8,9 @@
  */
 
     require_once("../inc/init.php");
+    $karma;
+    $post_id;
     
-
     //Get from clicking a post 
     if(isset($_GET["post_id"]) && $_GET["post_id"] != null){
 
@@ -29,6 +30,9 @@
         $fullPost->set_placeholder("title", $data->title);
         $fullPost->set_placeholder("text", $data->text);
 
+        $karma = $data->karma;
+        $fullPost->set_placeholder("KarmaValue", $karma);
+
         $dbConnection->CloseConnection();
 
     } 
@@ -36,7 +40,6 @@
         //Error
         header("Location: index.php?page=0");
     }
-
 
     //Display Page
     $header->display();

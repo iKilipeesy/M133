@@ -21,7 +21,7 @@
     else if(isset($_POST["UploadPostButton"])){
         $upload = new View("UploadPost",true,false);
 
-        //CHeck if the input fields have benn filled out
+        //Check if the input fields have benn filled out
         if ($_POST["UploadPostTitle"] != null && $_POST["UploadPostText"] != null) {
             $dbConnection = new DatabaseConnection();
 

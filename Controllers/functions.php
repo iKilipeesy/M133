@@ -136,7 +136,7 @@ function SetPageination($amountOfRows, $page, $maxPages, $lastPost, $post, $acti
 		}
 
 	}	
-	// if there are 5 or less then 5 posts the Buttons will be hidden
+	//If there are 5 or less then 5 posts the Buttons will be hidden
 	else{
 		$post->set_placeholder("next_page_button_link", '');
 		$post->set_placeholder("back_page_button_link", '');
