@@ -29,12 +29,20 @@
         $fullPost->set_placeholder("date_author", "$date_author");
         $fullPost->set_placeholder("title", $data->title);
         $fullPost->set_placeholder("text", $data->text);
+		$fullPost->set_placeholder("amountOfKarma", $data->karma);
+		$fullPost->set_placeholder("post_id", $_GET["post_id"]);
 
         $karma = $data->karma;
         $fullPost->set_placeholder("KarmaValue", $karma);
 
         $dbConnection->CloseConnection();
 
+		if( isset($_POST["upvoteButton"]) ){
+			
+		}
+		else if( isset($_POST["downvoteButton"]) ){
+			
+		}
     } 
     else{
         //Error

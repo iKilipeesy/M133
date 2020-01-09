@@ -13,16 +13,18 @@
     private $post_id;
     private $title;
     private $text;
-    private $date_author;   
+    private $date_author;  
+	private $karma;
     public $innerhtml;
     private $select_option;
 
 	
-	public function __construct($title, $text, $date_author, $post_id) {
+	public function __construct($title, $text, $date_author, $post_id, $karma) {
         $this->title = $title;
         $this->text = $text;
         $this->post_id = $post_id;
         $this->date_author = $date_author;
+		$this->karma = $karma;
 
         $this->load();
         $this->set_placeholder();
