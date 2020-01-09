@@ -8,19 +8,39 @@
  */
 
     require_once("../inc/init.php");
-    $karma;
-    $post_id;
+    $errorMessage = "";
+    //Get the id of the post that was clicked
+    $post_id = $_GET['post_id'];
     
+    //If a karma buttons has been pressed update the karma value
+    if ( isset($_POST["upvoteButton"]) || isset($_POST["downvoteButton"]) ) {
+        if ( isset($_SESSION["User"]) ) {
+            $dbConnection = new DatabaseConnection();
+            $data = $dbConnection->GetPostWithId($post_id);
+
+            if( isset($_POST["upvoteButton"]) ){
+
+                $dbConnection->UpdatePostKarma( $_GET["post_id"], $data->karma + 1);
+            }
+            else if( isset($_POST["downvoteButton"]) ){
+                $dbConnection->UpdatePostKarma( $_GET["post_id"], $data->karma - 1);
+            }
+
+            $dbConnection->CloseConnection();
+        }
+        else{
+            $errorMessage = "You need to be logged in to rate a post!";
+        }
+    }
+    
+
     //Get from clicking a post 
     if(isset($_GET["post_id"]) && $_GET["post_id"] != null){
-
-        //Get the id of the post that was clicked
-        $post_id = $_GET['post_id'];
-                
-        //Get the entire post list from the db (is this method named wrong? or are we getting all the posts from the bd to just display one? work with id here)
+        
+        //Get the post again so the updated karma value gets displayed
         $dbConnection = new DatabaseConnection();
         $data = $dbConnection->GetPostWithId($post_id);
-
+        
         //Combine strings for dateauthor
         $date_author = $data->creationDate . " ". $data->firstName . " ". $data->lastName;
 
@@ -29,31 +49,23 @@
         $fullPost->set_placeholder("date_author", "$date_author");
         $fullPost->set_placeholder("title", $data->title);
         $fullPost->set_placeholder("text", $data->text);
-		$fullPost->set_placeholder("amountOfKarma", $data->karma);
+        $fullPost->set_placeholder("amountOfKarma", $data->karma);
+        $fullPost->set_placeholder("ERROR MESSAGE", $errorMessage);
+        //PostId for the link
 		$fullPost->set_placeholder("post_id", $_GET["post_id"]);
 
-        $karma = $data->karma;
-        $fullPost->set_placeholder("KarmaValue", $karma);
-
         $dbConnection->CloseConnection();
-
-		if( isset($_POST["upvoteButton"]) ){
-			
-		}
-		else if( isset($_POST["downvoteButton"]) ){
-			
-		}
     } 
     else{
         //Error
         header("Location: index.php?page=0");
     }
 
+    
+
     //Display Page
     $header->display();
     $nav->display();
-    $fullPost->display();
-    $footer->display();
-    
+    $fullPost->display();    
 
 ?>

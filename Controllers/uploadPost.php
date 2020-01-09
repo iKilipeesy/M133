@@ -56,5 +56,4 @@
     $header->display();
     $nav->display();
     $upload->display();
-    $footer->display();
 ?>  

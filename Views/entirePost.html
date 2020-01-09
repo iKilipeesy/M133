@@ -13,14 +13,13 @@
         {text}
     </div>
 	
-	<div id="postKarma">
-        
-		
+	<div id="postKarma">	
 		<form method="POST" action="singlePost.php?post_id={post_id}">
-			{amountOfKarma}
+			Karma: <b>{amountOfKarma}</b>
 			
-			<button name="upvoteButton" id="upvoteButton" type="submit" />
-			<button name="downvoteButton" id="downvoteButton" type="submit" />
+			<button name="upvoteButton" id="upvoteButton" class="karmaButtons" type="submit" value="Up" />
+			<button name="downvoteButton" id="downvoteButton" class="karmaButtons" type="submit" value="Down"/>
 		</form>
     </div>
+    <span class="errorMsg">{ERROR MESSAGE}</span>
 </div>

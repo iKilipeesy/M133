@@ -40,8 +40,9 @@
         $this->innerhtml = preg_replace("/{post_id}/", $this->post_id, $this->innerhtml);
 		$this->innerhtml = preg_replace("/{text}/", $this->text, $this->innerhtml);
         $this->innerhtml = preg_replace("/{date_author}/", $this->date_author, $this->innerhtml);
-        $this->innerhtml = preg_replace("/{options}/", $this->select_option,$this->innerhtml );
-
+        // $this->innerhtml = preg_replace("/{options}/", $this->select_option,$this->innerhtml );
+        $this->innerhtml = preg_replace("/{karmaAmount}/", $this->karma, $this->innerhtml );
+        
     }
 
     public function set_select_option($option){

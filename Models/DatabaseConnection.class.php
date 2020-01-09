@@ -62,7 +62,7 @@ class DatabaseConnection{
 
         while($row = mysqli_fetch_object($data)){
             $posts[] = array("username" => $row->username, "firstname" => $row->firstName, "lastname" => $row->lastName, 
-            "title" => $row->title, "text" => $row->text, "date" => $row->creationDate, "postId" => $row->postId);
+            "title" => $row->title, "text" => $row->text, "date" => $row->creationDate, "postId" => $row->postId, "karma" => $row->karma);
         }
 
         return $posts;
@@ -73,9 +73,11 @@ class DatabaseConnection{
     function GetPostWithId($postID){
 
         //Prepare query statement
-        $stmt = $this->connection->prepare("SELECT user.username, user.firstName, user.lastName,
-        post.title, post.text, post.creationDate, post.postIdm post.karma
-        FROM post INNER JOIN user ON post.userId=user.userId WHERE post.postId = ?");
+        $sql = "SELECT user.username, user.firstName, user.lastName,
+        post.title, post.text, post.creationDate, post.postId, post.karma
+        FROM post INNER JOIN user ON post.userId=user.userId WHERE post.postId = ?";
+        $stmt = $this->connection->prepare($sql);
+
         $stmt->bind_param('i',$postID);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -89,11 +91,11 @@ class DatabaseConnection{
         }
     }
 	
-	function UpdatePostKarma($postID, $currentKarma){
+	function UpdatePostKarma($postID, $newKarma){
 		//Prepare Sql Statement for update
-		$sql = "UPDATE post SET karma = ? WHERE Id = ?";
+		$sql = "UPDATE post SET karma=? WHERE postId=?";
 		$stmt = $this->connection->prepare($sql);
-		$stmt->bind_param("ii", $postID, $currentKarma);
+		$stmt->bind_param("ii", $newKarma, $postID);
 		
 		//Execute returns a boolean if it was successfull or not
         if($stmt->execute()){

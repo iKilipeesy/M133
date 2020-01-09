@@ -59,5 +59,4 @@
     $header->display();
     $nav->display();
     $register->display();
-    $footer->display();
 ?>

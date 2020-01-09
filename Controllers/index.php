@@ -13,8 +13,5 @@ $nav->display();
 
 // shows all posts (5 posts on each page);
 ShowPosts();
-   
-//display Page
-$footer->display();
 
 ?>
