@@ -89,7 +89,7 @@ function ShowPosts(){
                 //create each post
                 $temp = new Post($data[$i]["title"], $data[$i]["text"], 
                 	$data[$i]["date"] . " ". $data[$i]["firstname"] . " ". $data[$i]["lastname"],
-                	$data[$i]["postId"]); 
+                	$data[$i]["postId"], $data[$i]['karma']); 
 
 				$htmlOutput = $htmlOutput . $temp->innerhtml;
 			}
@@ -101,7 +101,7 @@ function ShowPosts(){
 		for ($i=$firstPost; $i <=$amountOfRows - 1; $i++) {
 			//create each post
 			$temp = new Post($data[$i]["title"], $data[$i]["text"],
-				$data[$i]["date"] . " ". $data[$i]["firstname"] . " ". $data[$i]['lastname'], $data[$i]['postId']);
+				$data[$i]["date"] . " ". $data[$i]["firstname"] . " ". $data[$i]['lastname'], $data[$i]['postId'], $data[$i]['karma']);
 			$htmlOutput = $htmlOutput . $temp->innerhtml;
 		}
     }
